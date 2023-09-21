@@ -1,8 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import '../model/Categories.dart';
+import 'package:food_recipes/view/widgets/bottom_text.dart';
+import 'package:get/get.dart';
+import 'widgets/card_api.dart';
+import 'widgets/main_container.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -12,69 +12,57 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  Future<List<Categories>> fetchCategories() async {
-    final response = await http.get(Uri.parse('https://www.themealdb.com/api/json/v1/1/categories.php'));
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> jsonData = json.decode(response.body);
-      final List<dynamic> categoriesData = jsonData['categories'];
-      return categoriesData.map((category) => Categories.fromJson(category)).toList();
-    } else {
-      throw Exception('Failed to load categories');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).dialogBackgroundColor,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title:const Text(
+          "Food Recipes",style: TextStyle(color: Colors.white),
+        ),
+        leading:const Icon(Icons.restaurant_menu_outlined,color: Colors.white),
+        actions: [
+          IconButton(onPressed: (){
+            Get.bottomSheet(
+              backgroundColor: Theme.of(context).primaryColor,
+
+             Column(
+               children: [
+                 ListTile(
+                   onTap: (){
+                         Get.changeTheme(ThemeData.light());
+                   },
+                   title: Text('Light Mode'),
+                   leading: Icon(Icons.light_mode),
+                 ),
+                 ListTile(
+                   onTap: (){
+                     Get.changeTheme(ThemeData.from(colorScheme:  ColorScheme.fromSeed(seedColor: Colors.orangeAccent)));
+                   },
+                   title:const Text('Default Mode'),
+                   leading: Icon(Icons.light_mode),
+                 ),
+                 ListTile(
+                   onTap: (){
+                    Get.changeTheme(ThemeData.dark());
+                   },
+                   title: Text('Dark Mode'),
+                   leading: Icon(Icons.dark_mode),
+                 ),
+               ],
+             )
+
+            );
+          }, icon:const Icon(Icons.more_vert_outlined,color: Colors.white))
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(child:
-            FutureBuilder<List<Categories>>(
-              future: fetchCategories(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
-                }
-                else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else {
-                  final categories = snapshot.data;
-
-                  return Expanded(
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: categories!.length,
-                      itemBuilder: (context, index) {
-                        final category = categories[index];
-                        return  Container(
-                          height: 300,
-                          width: 300,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          child: Column(
-                            children: [
-                            Image(
-                                height: 100,
-                                width: 100,
-
-                                image: NetworkImage(category.strCategoryThumb)),
-                              Text(category.strCategory),
-
-                            ],
-                          ),
-                        );
-
-
-                      },
-                    ),
-                  );
-                }
-              },
-            )
-
-            )
+           MainContainer(),
+         CardAPI(),
+          BottomText(),
           ],
         ),
       ),
