@@ -9,7 +9,7 @@ class MainContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Container(
       width: Get.width,
-      height: Get.height*0.5,
+      height: Get.height*0.48,
       decoration: BoxDecoration(
         borderRadius:const BorderRadius.only(bottomLeft: Radius.circular(20),
             bottomRight: Radius.circular(40)

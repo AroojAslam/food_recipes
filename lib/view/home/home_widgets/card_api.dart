@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:food_recipes/model/Categories.dart';
+import 'package:food_recipes/view/recipe_view.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 class CardAPI extends StatelessWidget {
   const CardAPI({super.key});
@@ -39,15 +41,14 @@ class CardAPI extends StatelessWidget {
               itemCount: categories!.length,
               itemBuilder: (context, index) {
                 final category = categories[index];
-                return Card(
-                  elevation: 5,
-                  margin: EdgeInsets.symmetric(vertical: 20,horizontal: 10),
-                  child: Container(
-                    width: 150,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Theme.of(context).primaryColor.withOpacity(0.1),
-                    ),
+                return  Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
+                  width: 150,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Card(
+                    elevation: 5,
                     child: Column(
                       children: [
                         Image(
@@ -59,7 +60,9 @@ class CardAPI extends StatelessWidget {
                         )),
                         const  SizedBox(height: 10,),
                         ElevatedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Get.to(ViewRecipe(strCategory: category.strCategory,strCategoryDescription: category.strCategoryDescription,));
+                          },
                           child:const Text('View Recipe'),
                         ),
                       ],
