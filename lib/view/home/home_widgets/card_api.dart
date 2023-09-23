@@ -22,11 +22,14 @@ class CardAPI extends StatelessWidget {
       future: fetchCategories(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
-            child: Column(
-              children: [
-                CircularProgressIndicator()
-              ],
+          return Expanded(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator()
+                ],
+              ),
             ),
           );
         }
@@ -41,32 +44,30 @@ class CardAPI extends StatelessWidget {
               itemCount: categories!.length,
               itemBuilder: (context, index) {
                 final category = categories[index];
-                return  Container(
-                  margin: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
-                  width: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Card(
-                    elevation: 5,
-                    child: Column(
-                      children: [
-                        Image(
-                            height: 100,
-                            width: 100,
-                            image: NetworkImage(category.strCategoryThumb)),
-                        Text(category.strCategory,style:const TextStyle(
-                            fontSize: 16,fontWeight: FontWeight.w600
-                        )),
-                        const  SizedBox(height: 10,),
-                        ElevatedButton(
-                          onPressed: (){
-                            Get.to(MealTypes(strCategoryDescription: category.strCategoryDescription,strCategory: category.strCategory,
-                            ));
-                          },
-                          child:const Text('View'),
-                        ),
-                      ],
+                return  GestureDetector(
+                  onTap: (){
+                    Get.to(MealTypes(strCategoryDescription: category.strCategoryDescription,strCategory: category.strCategory,
+                    ));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
+                    width: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Card(
+                      elevation: 5,
+                      child: Column(
+                        children: [
+                          Image(
+                              height: 100,
+                              width: 100,
+                              image: NetworkImage(category.strCategoryThumb)),
+                          Text(category.strCategory,style:const TextStyle(
+                              fontSize: 16,fontWeight: FontWeight.w600
+                          )),
+                        ],
+                      ),
                     ),
                   ),
                 );

@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
         Padding(
           padding: const EdgeInsets.only(left: 10,top: 10),
           child: Align(alignment: Alignment.centerLeft,
-          child: Text('Categories',style: TextStyle(color: Theme.of(context).primaryColor,fontWeight: FontWeight.w600),)),
+          child: Text('Categories',style: TextStyle(color: Theme.of(context).primaryColor,fontWeight: FontWeight.w600,fontSize: 16),)),
         ),
        const  CardAPI(),
          const BottomText(),
