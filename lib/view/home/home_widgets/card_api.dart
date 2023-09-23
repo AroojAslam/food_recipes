@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:food_recipes/model/Categories.dart';
-import 'package:food_recipes/view/recipe_view.dart';
+import 'package:food_recipes/view/meal_types.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 class CardAPI extends StatelessWidget {
@@ -61,9 +61,10 @@ class CardAPI extends StatelessWidget {
                         const  SizedBox(height: 10,),
                         ElevatedButton(
                           onPressed: (){
-                            Get.to(ViewRecipe(strCategory: category.strCategory,strCategoryDescription: category.strCategoryDescription,));
+                            Get.to(MealTypes(strCategoryDescription: category.strCategoryDescription,strCategory: category.strCategory,
+                            ));
                           },
-                          child:const Text('View Recipe'),
+                          child:const Text('View'),
                         ),
                       ],
                     ),
