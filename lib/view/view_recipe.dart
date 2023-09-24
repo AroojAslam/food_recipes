@@ -25,13 +25,13 @@ class _ViewRecipeState extends State<ViewRecipe> {
     return Scaffold(
       appBar:  AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text( widget.strMeal.toString(),style: TextStyle(color: Colors.white),
+        title: Text( widget.strMeal.toString(),style:const TextStyle(color: Colors.white),
         ),
         leading: IconButton(
           onPressed: (){
             Get.back();
           },
-          icon: Icon(Icons.keyboard_backspace_outlined,color: Colors.white),
+          icon:const Icon(Icons.keyboard_backspace_outlined,color: Colors.white),
         ),
 
       ),
@@ -72,7 +72,7 @@ class _ViewRecipeState extends State<ViewRecipe> {
                       child: Card(
                         elevation: 5,
                         child: Padding(
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(8),
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
@@ -84,7 +84,7 @@ class _ViewRecipeState extends State<ViewRecipe> {
                                 ),
                                SizedBox(width: Get.width*0.1,),
                                Text( widget.measures.take(20).join('\n'),
-                                  style: TextStyle(fontSize: 16),
+                                  style:const TextStyle(fontSize: 16),
                                 ),
                               ],
                             ),
