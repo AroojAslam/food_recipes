@@ -20,15 +20,15 @@ class Bottom_Sheet extends StatelessWidget {
                 onTap: (){
                   Get.changeTheme(ThemeData.light(useMaterial3: true));
                 },
-                title: Text('Light Mode',style: TextStyle(color: Colors.white)),
-                leading: Icon(Icons.light_mode,color: Colors.white),
+                title:const Text('Light Mode',style: TextStyle(color: Colors.white)),
+                leading:const Icon(Icons.light_mode,color: Colors.white),
               ),
               ListTile(
                 onTap: (){
                   Get.changeTheme(ThemeData.from(colorScheme:  ColorScheme.fromSeed(seedColor: Colors.orangeAccent),useMaterial3: true));
                 },
                 title:const Text('Default Mode',style: TextStyle(color: Colors.white)),
-                leading: Icon(Icons.brush_outlined,color: Colors.white),
+                leading:const Icon(Icons.brush_outlined,color: Colors.white),
               ),
 
             ],

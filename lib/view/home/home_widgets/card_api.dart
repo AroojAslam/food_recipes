@@ -22,7 +22,7 @@ class CardAPI extends StatelessWidget {
       future: fetchCategories(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Expanded(
+          return const Expanded(
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
