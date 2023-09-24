@@ -60,13 +60,13 @@ class _MealTypesState extends State<MealTypes> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text(widget.strCategory.toString(),style: TextStyle(color: Colors.white),
+        title: Text(widget.strCategory.toString(),style:const TextStyle(color: Colors.white),
         ),
         leading: IconButton(
           onPressed: (){
             Get.back();
           },
-          icon: Icon(Icons.keyboard_backspace_outlined,color: Colors.white),
+          icon:const Icon(Icons.keyboard_backspace_outlined,color: Colors.white),
         ),
 
       ),
@@ -77,8 +77,8 @@ class _MealTypesState extends State<MealTypes> {
             future:fetchmeals() ,
             builder: (context,AsyncSnapshot<List<dynamic>> snapshot) {
             if(!snapshot.hasData){
-              return Expanded(
-                child: const Align(
+              return const Expanded(
+                child: Align(
                   alignment: Alignment(0,0),
                     child: CircularProgressIndicator()),
               );
@@ -88,7 +88,7 @@ class _MealTypesState extends State<MealTypes> {
                 itemCount: mealData.length,
                 itemBuilder: (context, index) {
                     return Card(
-                      margin: EdgeInsets.only(top: 10,left: 10,right: 10),
+                      margin:const EdgeInsets.only(top: 10,left: 10,right: 10),
                       elevation: 5,
                       child: Padding(
                         padding: const EdgeInsets.all(10),
@@ -121,7 +121,6 @@ class _MealTypesState extends State<MealTypes> {
               ),
                   );
             }
-
           },)
         ],
       ),
