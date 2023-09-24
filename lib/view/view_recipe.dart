@@ -80,10 +80,10 @@ class _ViewRecipeState extends State<ViewRecipe> {
                               children: [
                                 Text(
                                  widget.ingredients.take(20).join('\n'),
-                                  style:const TextStyle(fontSize: 16),
+                                  style:const TextStyle(fontSize: 16,),
                                 ),
                                SizedBox(width: Get.width*0.1,),
-                               Text( widget.measures.take(20).join('\n'),
+                                Text( widget.measures.take(20).join('\n'),
                                   style:const TextStyle(fontSize: 16),
                                 ),
                               ],

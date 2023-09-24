@@ -34,7 +34,7 @@ class _MealTypesState extends State<MealTypes> {
     List<String> measures = [];
     for (int i = 1; i <= 20; i++) {
       final measure = meal['strMeasure$i'];
-      if (measure != null && measure.isNotEmpty) {
+      if (measure != ' ' && measure.isNotEmpty) {
         measures.add(measure);
       } else {
         break;

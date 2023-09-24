@@ -50,7 +50,7 @@ class CardAPI extends StatelessWidget {
                     ));
                   },
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
+                    margin:const EdgeInsets.symmetric(horizontal: 5,vertical: 10),
                     width: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -60,6 +60,7 @@ class CardAPI extends StatelessWidget {
                       child: Column(
                         children: [
                           Image(
+
                               height: 100,
                               width: 100,
                               image: NetworkImage(category.strCategoryThumb)),

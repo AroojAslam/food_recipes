@@ -30,13 +30,7 @@ class Bottom_Sheet extends StatelessWidget {
                 title:const Text('Default Mode',style: TextStyle(color: Colors.white)),
                 leading: Icon(Icons.brush_outlined,color: Colors.white),
               ),
-              ListTile(
-                onTap: (){
-                  Get.changeTheme(ThemeData.dark(useMaterial3: true));
-                },
-                title: Text('Dark Mode',style: TextStyle(color: Colors.white)),
-                leading: Icon(Icons.dark_mode,color: Colors.white),
-              ),
+
             ],
           ),
         ),
